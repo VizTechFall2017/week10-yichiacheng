@@ -1,4 +1,3 @@
-
 var svg = d3.select("#svg1"),
     margin = {top: 80, right: 20, bottom: 80, left: 40},
     width = +svg.attr("width") - margin.left - margin.right,
@@ -13,10 +12,10 @@ var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 var nestedData = [];
 
-d3.csv("./brent201716.csv", function(dataIn) {
+d3.csv("./brent20171615.csv", function(dataIn) {
     nestedData = d3.nest()
-    .key(function(d){return d.year})
-    .entries(dataIn);
+        .key(function(d){return d.year})
+        .entries(dataIn);
     console.log(nestedData);
 
     var loadData = nestedData.filter(function(d){return d.key == '2017'})[0].values;
@@ -74,7 +73,7 @@ function drawPoints(pointData){console.log(pointData);
 
 
     var rects = svg.selectAll('.bar')
-        //.data(pointData, function(d){return d.neigborhood;});
+    //.data(pointData, function(d){return d.neigborhood;});
         .data(pointData);
 
 
@@ -103,7 +102,6 @@ function drawPoints(pointData){console.log(pointData);
         .enter()
         .append('rect')
         .attr('class','bar')
-
         .attr('x',function(d){
             return x(d.neighborhood);
         })
@@ -122,10 +120,10 @@ function drawPoints(pointData){console.log(pointData);
 
 
 function updateData(selectedYear){
-console.log(selectedYear);
+    console.log(selectedYear);
     var loadData = nestedData.filter(function(d){return d.key == selectedYear})[0].values;
     console.log(loadData);
-drawPoints(loadData)
+    drawPoints(loadData)
 }
 
 function change(value){
@@ -133,12 +131,14 @@ function change(value){
 
     if(value =='2017'){
         updateData('2017');
-    }else if(value == '2016'){
+
+    }else if(value == '2015'){
+        updateData('2015');
+    }
+    else {
         updateData('2016');
     }
     //newData = updateData(value);
     //drawPoints(newData);
     //console.log(newData)
 }
-
-

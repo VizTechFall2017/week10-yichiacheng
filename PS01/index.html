@@ -100,11 +100,11 @@
 
 
 		  .bar {
-			  fill: SALMON;
+			  fill: slategray;
 		  }
 
 		  .bar:hover {
-			  fill: lightSALMON;
+			  fill: lightSTEELBLUE;
 		  }
 
 		  .axis--x path {
@@ -112,7 +112,17 @@
 		  }
 
 
-
+		  .toolTip {
+			  position: absolute;
+			  display: none;
+			  min-width: 80px;
+			  height: auto;
+			  background: WhiteSmoke;
+			  padding: 10px;
+			  text-align: center;
+			  opacity: 0.8;
+			  border-radius: 5px;
+		  }
 
 
 
@@ -184,7 +194,27 @@
 				</div>
 			</div>
 			<div class="twelve columns svg-container">
-				<svg  width="600" height="400" id="svg1"></svg>
+
+				<div class='radio'>
+					<label class='radio-inline'>
+						<input type="radio" name="year" value="2017" onclick='change("2017")'> 2017
+					</label>
+					<label class='radio-inline'>
+						<input type="radio" name="year" value="2016" onclick='change("2016")'> 2016
+					</label>
+					<label class='radio-inline'>
+						<input type="radio" name="year" value="2015" onclick='change("2015")'> 2015
+					</label>
+
+				</div>
+				</div>
+			</div>
+
+			<div id="content">
+				<svg class="svg"></svg>
+			</div>
+
+			<svg  width="600" height="350" id="svg1"></svg>
 			</div>
 
 
